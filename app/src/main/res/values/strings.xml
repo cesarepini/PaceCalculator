@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Pace Calculator</string>
+
+    <!--action strings!-->
+    <string name="action_settings">Settings</string>
+
+    <!--edit text default string for inserting the 5km time!-->
+    <string name="five_km_time_default_time" translatable="false">20:00</string>
+    <!--prompt text string for inserting the 5km time!-->
+    <string name="five_km_time_prompt">Please insert your 5 km time</string>
+
+    <!--prompt text string for inserting the 5km time!-->
+    <string name="calculate_paces">Calculate paces</string>
+
+    <!--warning for entering incorrectly the 5 km time in the edit box!-->
+    <string name="incorrect_5_km_time_entry">Please entry a time in the format MM:SS.</string>
+    <string name="title_activity_pace_calculation">PaceCalculation</string>
+</resources>
