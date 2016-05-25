@@ -9,10 +9,14 @@
     <!--prompt text string for inserting the 5km time!-->
     <string name="five_km_time_prompt">Please insert your 5 km time</string>
 
-    <!--prompt text string for inserting the 5km time!-->
+    <!--text string for the calculation of the training paces!-->
     <string name="calculate_paces">Calculate paces</string>
+
+    <!--text string for the calculation of the race times!-->
+    <string name="predict_race_times">Predict race times</string>
 
     <!--warning for entering incorrectly the 5 km time in the edit box!-->
     <string name="incorrect_5_km_time_entry">Please entry a time in the format MM:SS.</string>
     <string name="title_activity_pace_calculation">PaceCalculation</string>
+    <string name="title_activity_predicted_race_times">PredictedRaceTimes</string>
 </resources>

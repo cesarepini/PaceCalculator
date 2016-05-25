@@ -24,24 +24,25 @@ public class PaceCalculationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Intent intent = getActivity().getIntent();
+        String format = "%.0f";
         View root = inflater.inflate(R.layout.fragment_pace_calculation, container, false);
         double time5km = (double) Integer.parseInt(intent.getStringExtra(Intent.EXTRA_TEXT));
         FirstPaces firstPaces = new FirstPaces(time5km);
         firstPaces.setFirstPacesFromFiveKmTime();
         String[] trainingPacesString = {
-                "" + firstPaces.first400.pace,
-                "" + firstPaces.first600.pace,
-                "" + firstPaces.first800.pace,
-                "" + firstPaces.first1000.pace,
-                "" + firstPaces.first1200.pace,
-                "" + firstPaces.first1600.pace,
-                "" + firstPaces.first2000.pace,
-                "" + firstPaces.firstST.pace,
-                "" + firstPaces.firstMT.pace,
-                "" + firstPaces.firstLT.pace,
-                "" + firstPaces.firstEA.pace,
-                "" + firstPaces.firstMP.pace,
-                "" + firstPaces.firstHMP.pace
+                String.format(format, firstPaces.first400.pace),
+                String.format(format, firstPaces.first600.pace),
+                String.format(format, firstPaces.first800.pace),
+                String.format(format, firstPaces.first1000.pace),
+                String.format(format, firstPaces.first1200.pace),
+                String.format(format, firstPaces.first1600.pace),
+                String.format(format, firstPaces.first2000.pace),
+                String.format(format, firstPaces.firstST.pace),
+                String.format(format, firstPaces.firstMT.pace),
+                String.format(format, firstPaces.firstLT.pace),
+                String.format(format, firstPaces.firstEA.pace),
+                String.format(format, firstPaces.firstMP.pace),
+                String.format(format, firstPaces.firstHMP.pace)
         };
         String[] distancesString = {
                 "400 m",

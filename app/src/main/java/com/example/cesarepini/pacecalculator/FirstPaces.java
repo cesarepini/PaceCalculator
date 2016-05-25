@@ -21,11 +21,6 @@ public class FirstPaces {
     public Pace firstHMP;
     public Pace first10km;
 
-    /**
-     * initialise the object by setting all the paces to 0.
-     */
-    public FirstPaces(){}
-
     public FirstPaces(double time5km){
         this.first5km = new Pace(5, time5km);
     }
@@ -139,45 +134,17 @@ public class FirstPaces {
         };
     }
 
-    public void setFirstPacesFromFiveKmTime(double fiveKmTime){
-        this.first5km = new Pace(5, fiveKmTime);
-        this.first400 = first400PaceFromFiveKmTime(first5km.pace);
-        this.first600 = first600PaceFromFiveKmTime(first5km.pace);
-        this.first800 = first800PaceFromFiveKmTime(first5km.pace);
-        this.first1000 = first1000PaceFromFiveKmTime(first5km.pace);
-        this.first1200 = first1200PaceFromFiveKmTime(first5km.pace);
-        this.first1600 = first1600PaceFromFiveKmTime(first5km.pace);
-        this.first2000 = first2000PaceFromFiveKmTime(first5km.pace);
-        this.firstST = firstSTPaceFromFiveKmTime(first5km.pace);
-        this.firstMT = firstMTPaceFromFiveKmTime(first5km.pace);
-        this.firstLT = firstLTPaceFromFiveKmTime(first5km.pace);
-        this.firstEA = firstEAPaceFromFiveKmTime(first5km.pace);
-        this.firstMP = firstMPPaceFromFiveKmTime(first5km.pace);
-        this.firstHMP = firstHMPPaceFromFiveKmTime(first5km.pace);
-    }
-
     /**
-     * It calculates the different training paces from a 5km race time.
-     * @param fiveKmTime is the time on a five km race.
-     * @return a string of doubles with the different paces for the workouts.
+     * Predicts the race times.
      */
-    public Pace[] calculatePacesFromFiveKmTime(double fiveKmTime){
-        this.first5km = new Pace(5, fiveKmTime);
-        return new Pace[]{
-                first400PaceFromFiveKmTime(first5km.pace),
-                first600PaceFromFiveKmTime(first5km.pace),
-                first800PaceFromFiveKmTime(first5km.pace),
-                first1000PaceFromFiveKmTime(first5km.pace),
-                first1200PaceFromFiveKmTime(first5km.pace),
-                first1600PaceFromFiveKmTime(first5km.pace),
-                first2000PaceFromFiveKmTime(first5km.pace),
-                firstSTPaceFromFiveKmTime(first5km.pace),
-                firstMTPaceFromFiveKmTime(first5km.pace),
-                firstLTPaceFromFiveKmTime(first5km.pace),
-                firstEAPaceFromFiveKmTime(first5km.pace),
-                firstMPPaceFromFiveKmTime(first5km.pace),
-                firstHMPPaceFromFiveKmTime(first5km.pace)
-        };
+    public void predictRaceTimes(){
+        if (this.firstMP == null) {
+            this.firstMP = firstMPPaceFromFiveKmTime(this.first5km.pace);
+        }
+        if (this.firstHMP == null) {
+            this.firstHMP = firstMPPaceFromFiveKmTime(this.first5km.pace);
+        }
+        this.first10km = new Pace(10, firstMP.time/4.64);
     }
 
     /**
@@ -394,7 +361,7 @@ public class FirstPaces {
                 FIRST_MP[0].pace,
                 FIRST_MP[1].pace
         );
-        return new Pace(m * fiveKmTime + q);
+        return new Pace(42.195, 42.195 * (m * fiveKmTime + q));
     }
 
     private Pace firstHMPPaceFromFiveKmTime(double fiveKmTime){
@@ -410,7 +377,7 @@ public class FirstPaces {
                 FIRST_HMP[0].pace,
                 FIRST_HMP[1].pace
         );
-        return new Pace(m * fiveKmTime + q);
+        return new Pace(42.195/2, 42.195 * (m * fiveKmTime + q) / 2);
     }
 
     //METHODS FOR EXTRACTING A STRAIGHT FROM TWO KNOWN POINTS
